@@ -28,7 +28,7 @@ body {
 #app {
   display: flex;
   flex-direction: column;
-  height: 97vh;
+  height: 100vh;
   gap: 30px;
 }
 
