@@ -1,0 +1,66 @@
+.button-sample {
+  border: none;
+  background-color: #24b4fb;
+  border-radius: 0.4em;
+  cursor: pointer;
+  padding: 10px;
+  width: 140px;
+  height: 44px;
+  transition: all ease-in-out 0.2s;
+  font-size: 16px;
+  height: auto;
+  align-self: center;
+  transition: all 400ms ease;
+}
+
+.button-sample span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 600;
+  height: 100%;
+}
+
+.button-sample:hover {
+  background-color: #1778d8;
+}
+
+.button-sample_red {
+  background-color: #fb7324;
+  height: 44px;
+  margin-right: 5px;
+}
+
+.button-sample_red span img {
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+
+.button-sample_red:hover {
+  background-color: #c17400;
+}
+.button-sample_target{
+  background-color: #c17400
+}
+
+@media screen and (width <= 400px) {
+  .button-sample span p {
+    display: none;
+  }
+  .button-sample,
+  .button-sample_red {
+    width: 60px;
+    height: 60px;
+  }
+  .button-sample span img, .button-sample span svg {
+    width: 35px;
+    height: 35px;
+    margin: 0;
+  }
+
+ 
+.button-sample_red span img {
+  margin: 0px;
+}
+}

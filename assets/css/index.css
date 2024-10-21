@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background_sencod: #212121;
+  --background_thirty: #2f2e2e;
+  --color_text_primary: #ffff;
+  --height_footer: 100px;
+  --background-opacity: #1111114d;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background_sencod);
+  position: relative;
+}
+#root {
+  position: relative;
+}
+
+.max-heigth {
+  height: 97vh !important;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  gap: 30px;
+}
+
+#section {
+  flex: 1;
+}
+
+
+
+.animation-closeEffectScale {
+  animation: closeEffectScale 390ms ease-in-out both !important;
+}
+
+.animation-appearEffectScale {
+  animation: appearEffectScale 450ms ease-out both !important;
+}
+@keyframes appearEffectScale {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes closeEffectScale {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}

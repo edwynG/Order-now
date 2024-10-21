@@ -1,0 +1,23 @@
+/* From Uiverse.io by gharsh11032000 */
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 130px);
+  min-height: 330px;
+}
+
+.welcome-title {
+  font-size: 60px;
+  font-weight: bold;
+}
+.welcome-slogan {
+  font-size: 18px;
+  font-weight: 300;
+}
+.welcome-text {
+  text-align: center;
+  color: #ffff;
+}
