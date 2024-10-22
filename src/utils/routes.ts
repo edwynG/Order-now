@@ -3,13 +3,8 @@ import InterfaceNofound from "../components/InterfaceNofound.js";
 import InterfaceWelcome from "../components/InterfaceWelcome.js";
 import InterfaceJobs from "../components/InterfaceJobs.js";
 import { routerDOM, routerHashDOM } from "./context.js";
-import {
-  appendNodeDocument,
-  placeNodeDocument,
-  removeNodeBySelector,
-} from "./nodes.js";
-import { existDatabase, isEmptyDatabase } from "./api.js";
-import { decoratorRouterLoader } from "./helpers.js";
+import { placeNodeDocument } from "./nodes.js";
+import { existDatabase } from "./api.js";
 
 export function toNavigateHash(pathname: string): void {
   let path: string = "/#" + pathname;
@@ -43,10 +38,9 @@ export function renderHome(): void {
   existDatabase().then((result) => {
     if (result) {
       toNavigateHash(routerDOM.jobs);
-      return;
+      return false;
     }
     placeNodeDocument("#section", InterfaceWelcome());
-    
   });
 }
 

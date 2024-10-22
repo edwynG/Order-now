@@ -1,6 +1,6 @@
 import { backendData } from "./context.js";
 
- export interface MyData {
+export interface MyData {
   id: number;
   title: string;
   content: string;
@@ -105,7 +105,11 @@ function openDatabase(): IDBOpenDBRequest {
 }
 
 export async function isEmptyDatabase(): Promise<boolean> {
-  return !Boolean((await getDatajobs()).length);
+  try {
+    return !Boolean((await getDatajobs()).length);
+  } catch (error) {
+    return false;
+  }
 }
 
 export async function existDatabase(): Promise<boolean> {
@@ -122,7 +126,10 @@ export async function getIdMax(): Promise<number> {
   return new Promise((resolve, reject) => {
     database.onsuccess = (event: Event) => {
       const db: IDBDatabase = (event.target as IDBOpenDBRequest).result;
-      const transaction = db.transaction([backendData.registers[0]], "readonly");
+      const transaction = db.transaction(
+        [backendData.registers[0]],
+        "readonly"
+      );
       const objectStore = transaction.objectStore(backendData.registers[0]);
       let maxId = 0;
 
@@ -137,7 +144,7 @@ export async function getIdMax(): Promise<number> {
           }
           cursor.continue(); // Continuar con el siguiente registro
         } else {
-          resolve(maxId)
+          resolve(maxId);
         }
       };
     };

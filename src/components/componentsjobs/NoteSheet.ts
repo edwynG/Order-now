@@ -16,7 +16,7 @@ function NoteSheet(title: string, content: string, date: string): HTMLElement {
   container.addEventListener("click", (e) => {
     e.preventDefault();
     if (e.target !== document.getElementById("container-page")) {
-      return;
+      return false;
     }
     document.getElementById("page").classList.add("animation-closeEffectScale");
     setTimeout(() => {

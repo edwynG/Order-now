@@ -17,32 +17,30 @@ function isCardJobs(component: HTMLElement): myCard {
   if (component.classList.contains("card")) {
     return { id: parseInt(component.getAttribute("id")), status: true };
   }
-  console.log(component.parentElement);
+
   return isCardJobs(component.parentElement);
 }
 
-function eventdDeleteCardJobs(e: PointerEvent): void {
+function eventdDeleteCardJobs(e: PointerEvent): boolean {
   let option: boolean =
     (e.currentTarget as HTMLElement).getAttribute("case") === "status delete";
   if (!option) {
-    return;
+    return false;
   }
   let element: HTMLElement = e.target as HTMLElement;
-  console.log(element);
   let { id, status } = isCardJobs(element);
   if (!status) {
-    return;
+    return false;
   }
   deletejob(id)
     .then((result) => {
-      console.info(result);
       document.getElementById(`${id}`).remove();
       if (!document.getElementById("container-cards_jobs").children.length) {
         placeNodeDocument("#container-jobs", InitJobs());
       }
     })
     .catch((err) => {
-      console.error(err);
+      console.error("Ups: " + err);
     });
 }
 

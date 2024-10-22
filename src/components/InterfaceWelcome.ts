@@ -1,5 +1,5 @@
 import { routerDOM } from "../utils/context.js";
-import {  toHTMLElement } from "../utils/nodes.js";
+import { toHTMLElement } from "../utils/nodes.js";
 import { toNavigateHash } from "../utils/routes.js";
 import ButtonAnimate from "./componentsShared/ButtonAnimate.js";
 
@@ -11,7 +11,6 @@ function InterfaceWelcome(): HTMLElement {
         e.preventDefault();
         toNavigateHash(routerDOM.jobs);
       });
-      btn;
     }
   }, 500);
   return toHTMLElement(

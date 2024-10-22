@@ -26,7 +26,7 @@ function createJobs(e: Event) {
 
   if (title.length == 0 || content.length == 0) {
     alert("Faltan datos por rellenar en el formulario.");
-    return;
+    return false;
   }
   formClose();
 
@@ -39,7 +39,13 @@ function createJobs(e: Event) {
     };
     appendNodeDocument("#container-cards_jobs", CardJobs(data));
 
-    createjob(data);
+    createjob(data)
+      .then((result) => {
+        //console.info(result);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   });
 }
 
