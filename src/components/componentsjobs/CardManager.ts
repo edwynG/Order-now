@@ -60,7 +60,7 @@ function toggleStatusDelete(component: HTMLElement) {
   }
 }
 
-function CardManager() {
+async function CardManager():Promise<HTMLElement> {
   let containerCardManager: HTMLElement = document.createElement("DIV");
   let buttonCreate: HTMLElement = ButtonSample("Crear tarea");
   let buttonDelete: HTMLElement = ButtonSample("Borrar tarea", true);
@@ -90,7 +90,7 @@ function CardManager() {
 
   containerCards.classList.add("container-cards_jobs");
   containerCards.setAttribute("id", "container-cards_jobs");
-  showCardsJobsTo(containerCards);
+  await showCardsJobsTo(containerCards);
 
   containerCards.addEventListener("click", eventdDeleteCardJobs);
 

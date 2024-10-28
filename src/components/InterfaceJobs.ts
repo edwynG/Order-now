@@ -8,7 +8,7 @@ async function InterfaceJobs(): Promise<HTMLElement> {
     let container: HTMLElement = document.createElement("DIV");
     container.classList.add("container-jobs");
     container.setAttribute("id", "container-jobs");
-    container.appendChild(result ? InitJobs() : CardManager());
+    container.appendChild(result ? InitJobs() : await CardManager());
 
     return container;
   } catch (error) {

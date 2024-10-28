@@ -1,6 +1,6 @@
 import { appendNodeDocument, placeNodeDocument } from "../../utils/nodes.js";
 import ButtonAnimate from "../componentsShared/ButtonAnimate.js";
-import containerCards from "./CardManager.js";
+import CardManager from "./CardManager.js";
 import FromJob from "./FormJob.js";
 
 function InitJobs(): HTMLElement {
@@ -22,10 +22,10 @@ function InitJobs(): HTMLElement {
   button.addEventListener("click", () => {
     appendNodeDocument("#section", FromJob());
     document.getElementById("creadJobs").addEventListener("click", () => {
-      placeNodeDocument("#container-jobs", containerCards());
-    });
-    document.getElementById("cancelJobs").addEventListener("click", () => {
-      placeNodeDocument("#container-jobs", InitJobs());
+      setTimeout(async () => {
+        const InterfaceWithCards = await CardManager();
+        placeNodeDocument("#container-jobs", InterfaceWithCards);
+      }, 100);
     });
   });
 

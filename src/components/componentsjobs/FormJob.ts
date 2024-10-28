@@ -17,7 +17,7 @@ function formClose() {
   }, 300);
 }
 
-async function createJobs(e: Event) {
+async function createJobs(e: Event): Promise<void> {
   e.preventDefault();
   let inputTitleJob: HTMLInputElement = document.getElementById(
     "title"
@@ -31,7 +31,7 @@ async function createJobs(e: Event) {
 
   if (title.length == 0 || content.length == 0) {
     alert("Faltan datos por rellenar en el formulario.");
-    return false;
+    return;
   }
   formClose();
 
@@ -45,8 +45,8 @@ async function createJobs(e: Event) {
 
   appendNodeDocument("#container-cards_jobs", CardJobs(data));
 
-  const result: Response = await createjob(data);
-  console.log(result);
+  await createjob(data);
+  // Falta añadir la logica para añadir el mensaje de la respuesta
 }
 
 function interaction(
@@ -92,7 +92,9 @@ function FormJob(): HTMLElement {
                         </form>
                       </div>
                       `.trim();
-  searchChildNode(container, "#form").addEventListener("submit",(e)=> e.preventDefault());
+  searchChildNode(container, "#form").addEventListener("submit", (e) =>
+    e.preventDefault()
+  );
   let groupBtn: HTMLElement = searchChildNode(container, "#group-btn");
   groupBtn?.appendChild(buttonCread);
   groupBtn?.appendChild(buttonCancel);

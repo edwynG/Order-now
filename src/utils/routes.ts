@@ -1,4 +1,3 @@
-import Loader from "../components/componentsShared/Loader.js";
 import InterfaceNofound from "../components/InterfaceNofound.js";
 import InterfaceWelcome from "../components/InterfaceWelcome.js";
 import InterfaceJobs from "../components/InterfaceJobs.js";
@@ -6,26 +5,27 @@ import { routerDOM, routerHashDOM } from "./context.js";
 import { placeNodeDocument } from "./nodes.js";
 import { existDatabase, Response } from "./api.js";
 
+
 export function toNavigateHash(pathname: string): void {
   let path: string = "/#" + pathname;
   history.pushState(null, pathname, path);
   toRoute();
 }
 
-export function toRoute(): void {
+export async function toRoute(): Promise<void> {
   let hash: string = location.hash;
 
   switch (hash) {
     case "":
-      renderHome();
+      await renderHome();
       break;
 
     case routerHashDOM.home:
-      renderHome();
+      await renderHome();
       break;
 
     case routerHashDOM.jobs:
-      renderJobs();
+      await renderJobs();
       break;
 
     default:

@@ -25,21 +25,19 @@ export function getAbbreviatedDate(): string {
   return `${day} ${month}, ${year} `;
 }
 
-export function showCardsJobsTo(element: HTMLElement) {
-  getDatajobs().then((arr) => {
-    arr.forEach((object) => {
-      element.appendChild(CardJobs(object));
-    });
+export async function showCardsJobsTo(element: HTMLElement): Promise<void> {
+  const arr = await getDatajobs();
+  arr.forEach((object) => {
+    element.appendChild(CardJobs(object));
   });
 }
-
-export function decoratorRouterLoader(functions: () => void) {
+export function addInterfaceLoad(): void {
   let loader: HTMLElement = document.getElementById("loader");
   if (!loader) {
     appendNodeDocument("#root", Loader());
   }
-  setTimeout(() => {
-    functions();
-    removeNodeBySelector("#loader");
-  }, 3000);
+}
+
+export function removeInterfaceLoad(): void {
+  removeNodeBySelector("#loader");
 }
